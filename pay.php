@@ -63,6 +63,11 @@ while(empty($arr_paycart))
 echo "Your order_ID is($orderID_insert)";
 echo "The total money to pay is{$total_money}";
 
+unset($_SESSION["mycar"]);
+unset($_SESSION["sales_result"]);
+
+ob_clean();
+
 
 
 
