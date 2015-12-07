@@ -13,20 +13,16 @@ $date=date("Y/m/d");
 
 $salesperson=$_SESSION["sales_result"];
 
-$get_orderID="select MAX(order_ID) from order";
-$biggest_orderID=mysql_query($get_orderID, $conn);
+$get_transactionID="select MAX(transaction_ID) from transaction";
+$biggest_transactionID=mysql_query($get_transactionID, $conn);
 
-if($biggest_orderID==null){
-    mysql_query("INSERT INTO order(order_ID,salesperson,Customer_ID,date) VALUES ('1','{$salesperson}','{$Customer_ID}','{$date}')");
+if($biggest_transactionID==null){
+    mysql_query("INSERT INTO transaction(transaction_ID,salesperson,Customer_ID,date) VALUES ('1','{$salesperson}','{$Customer_ID}','{$date}')");
 }
 else{
-    $orderID_insert=$biggest_orderID+1;
-    mysql_query("INSERT INTO order(order_ID,salesperson,Customer_ID,date) VALUES ('{$orderID_insert}','{$salesperson}','{$Customer_ID}','{$date}')");   
+    $transactionID_insert=$biggest_transactionID+1;
+    mysql_query("INSERT INTO transaction(transaction_ID,salesperson,Customer_ID,date) VALUES ('{$transactionID_insert}','{$salesperson}','{$Customer_ID}','{$date}')");   
 }
-
-
-$select_init_order_ID ="select order_ID from order where Customer_ID =0";
-$order__init_ID=  mysql_query($select_init_order_ID,$conn);
 
 
 global $total_money;
